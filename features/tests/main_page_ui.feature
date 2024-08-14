@@ -1,6 +1,9 @@
-# Created by ilarievilbrun at 8/12/24
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Tests for main page UI
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Verify header is shown
+    Given Open Target main page
+    Then Verify header is shown
+
+  Scenario: Verify header has correct amount links
+    Given Open Target main page
+    Then Verify header has 6 links

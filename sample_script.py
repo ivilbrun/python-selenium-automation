@@ -20,8 +20,8 @@ search = driver.find_element(By.NAME, 'q')
 search.clear()
 search.send_keys('Table')
 
-# wait for 4 sec
-sleep(4)
+# wait for 3 sec
+sleep(3)
 
 # click search button
 driver.find_element(By.NAME, 'btnK').click()

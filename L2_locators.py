@@ -22,7 +22,14 @@ driver.get('https://www.amazon.com/')
 # By XPATH — locates an element using DOM structure of
 # the page. This is the type of locator that is always available
 # for an element, even more, there are usually various
-# possible XPATHs
+# possible XPATHs.
+# To test XPATH in a browser, use $x() command in your browser console (chrome dev tools)
+# When writing XPATH expression we use forward slash ‘/’. The first ‘/’ represents beginning of the html tree
+# which is called as root. After every ‘/’ we should specify tagName of the immediate child element only.
+# Absolute xpaths are almost never used, i.e: /html/body/div/div/input/div/div/div/div[3]/input[2]
+# Relative xpaths are used the most, i.e: For example: //*[@class=‘actions’]//*[text()=’testing’]
+# XPath=”//tagname[@attribute='value']”
+
 #
 # By CSS Selector — CSS selectors are another alternative
 # of finding elements. This is useful for locating items that
@@ -65,21 +72,33 @@ driver.find_element(By.XPATH, "//input[@placeholder='Search Amazon']")
 # attribute -
 # value -
 
-# find by attribute only
+# find by attribute only, no tag
 driver.find_element(By.XPATH, "//*[@placeholder='Search Amazon']")
+
 # find by multiple attributes
 driver.find_element(By.XPATH, "//input[@tabindex='0' and @type='text' and @dir='auto']")
 driver.find_element(By.XPATH, "//input[@tabindex='0' and @type='text']")
 
 driver.find_element(By.ID, 'searchDropdownBox')  # driver.find_element(By.XPATH, "//select[@ID='searchDropdownBox']")
 
-# by text()
+# by text on the page, text() is used
 driver.find_element(By.XPATH, "//a[text()='Best Sellers']")
-# text() and attributes
+
+# text() and attributes, order does not matter
 driver.find_element(By.XPATH, "//a[text()='Best Sellers' and @class='nav-a  ']")
 driver.find_element(By.XPATH, "//a[@class='nav-a  ' and text()='Best Sellers']")
+
 # connecting to parent node
 driver.find_element(By.XPATH, "//div[@id='nav-xshop']//a[text()='Best Sellers']")
 driver.find_element(By.XPATH, "//div[@id='nav-xshop']//a[text()='Best Sellers']")
+
 # contains()
 driver.find_element(By.XPATH, "//h2[contains(text(), 'under $30')]")
+
+# selenium commands:
+# get(‘https://url’) — opens a web page
+# find_element() — searches for an element, throws Exception if element not found
+# click() — clicks
+# send_keys() — inputs keys into a field
+# clear() — clears input field
+# quit() — exits browser
