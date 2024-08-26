@@ -63,3 +63,19 @@ def verify_product_name(context):
     print(f'Actual product in cart name: {actual_name}')
     assert 'tea' in context.product_name.lower() and actual_name.lower(), f"Expected tea in both product name: {context.product_name} and actual name: {actual_name}"
 
+
+@then('Verify that every product has a name and an image')
+def verify_products_name_img(context):
+    # To see ALL listings (comment out if you only check top ones):
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    sleep(4)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+
+    all_products = context.driver.find_elements(*LISTINGS)  # [WebEl1, WebEl2, WebEl3, WebEl4]
+
+    for product in all_products:
+        title = product.find_element(*PRODUCT_TITLE).text
+        assert title, 'Product title not shown'
+        print(title)
+        product.find_element(*PRODUCT_IMG)
+

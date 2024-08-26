@@ -25,10 +25,16 @@ def search_product(context, product):
 def verify_search_results(context, product_outcome):
     actual_text = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
     assert product_outcome in actual_text, f'Expected {product_outcome} not in actual {actual_text}'
+    # context.app.search_results_page.verify_text()
 
 
 @then('Verify correct search results URL opens for {product_outcome}')
 def verify_url(context, product_outcome):
     url = context.driver.current_url
     assert product_outcome in url, f'Expected {product_outcome} not in {url}'
+    # context.app.search_results_page.verify_url()
+
+
+
+
 

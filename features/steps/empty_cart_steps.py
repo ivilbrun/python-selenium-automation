@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
 from behave import when, then
-from time import sleep
-
 
 # 2. Create a test case using BDD that
 # opens target.com, (given)
@@ -12,7 +10,6 @@ from time import sleep
 @when("Click on Cart icon")
 def click_cart(context):
     context.driver.find_element(By.XPATH, "//div[@data-test='@web/CartIcon']").click()
-    # context.app.main_page.open()
 
 
 @then("Verify 'Your cart is empty' message is shown")

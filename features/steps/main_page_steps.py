@@ -5,6 +5,7 @@ from behave import then
 @then('Verify header is shown')
 def verify_header_present(context):
     context.driver.find_element(By.CSS_SELECTOR, "[class*='utilityHeaderContainer']")
+    # context.app.main_page.open()
 
 
 @then('Verify header has {number} links')
